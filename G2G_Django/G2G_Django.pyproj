@@ -59,6 +59,7 @@
     <Folder Include="G2G_Django\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\templates\app\add.html" />
     <Content Include="app\templates\app\order.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />

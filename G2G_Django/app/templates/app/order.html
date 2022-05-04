@@ -4,16 +4,23 @@
 
 <h2>{{ title }}.</h2>
 <h3>{{ message }}</h3>
-<p>Use this area to provide additional information.</p>
 
-<form>
-    <label for="drink-names">Choose a drink:</label>
-    <select name="drink-names" id="drink-names">
-        {% for x in drinks %}
-        <option value={{x.title}}>{{x.title}}</option>
-        {% endfor %}
-    </select>
-</form>
+<h1>Order</h1>
+
+<table border="1">
+    {% for x in drinks %}
+    <tr>
+        <td>{{ x.id }}</td>
+        <td>{{ x.title }}</td>
+        <td>{{ x.size }}</td>
+        <td>{{ x.price }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<p>
+    <a href="add/">Add drink</a>
+</p>
 
 
 

@@ -5,6 +5,9 @@ Definition of views.
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
+from django.template.loader import get_template
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 from django.conf import settings
 from django.contrib import messages
@@ -59,12 +62,6 @@ def about(request):
         }
     )
 
-drink = Item(title='Coffee',price=20.00,size='DF', category='D')
-drink = Item(title='Juice',price=10.00,size='DF', category='D')
-drink = Item(title='Tea',price=15.00,size='DF', category='D')
-drink.save()
-drink.id
-
 def order(request):
     """Renders the main app page."""
     assert isinstance(request, HttpRequest)
@@ -75,10 +72,27 @@ def order(request):
             'title':'Order',
             'message':'Your order page.',
             'year':datetime.now().year,
-            'drinks': Item.objects.filter(category='D'),
+            'drinks': Item.objects.all()
         }
     )
-
+def add(request):
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/add.html',
+        {
+            'title':'Add drink',
+            'message':'Order a drink.',
+            'year':datetime.now().year
+        }
+    )
+  
+def addrecord(request):
+  x = request.POST['drink']
+  y = request.POST['size']
+  drink = Item(title=x,price=20.00,size=y, category='D')
+  drink.save()
+  return HttpResponseRedirect(reverse('order'))
 
 def products(request):
     context = {

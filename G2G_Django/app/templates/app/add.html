@@ -1,0 +1,29 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+<p>What would you like to order?</p>
+
+<form action="addrecord/" method="post">
+    {% csrf_token %}
+    <label for="drink">Choose a drink:</label>
+    <select name="drink" id="drink">
+        <option value='Coffee'>Coffee</option>
+        <option value='Tea'>Tea</option>
+        <option value='Juice'>Juice</option>
+    </select>
+    <br><br>
+    <label for="size">Choose size:</label>
+    <select name="size" id="drink-sizes">
+        <option value='SM'>Small</option>
+        <option value='MD'>Medium</option>
+        <option value='LG'>Large</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
+
+
+{% endblock %}

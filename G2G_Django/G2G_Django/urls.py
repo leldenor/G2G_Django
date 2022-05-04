@@ -14,6 +14,8 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
     path('order/', views.order, name='order'),
+    path('order/add/', views.add, name='add'),
+    path('order/add/addrecord/', views.addrecord, name='addrecord'),
     path('login/',
          LoginView.as_view
          (

@@ -80,11 +80,6 @@ class OrderItem(models.Model):
         if self.item.discount_price:
             return self.get_total_discount_item_price()
         return self.get_total_item_price()
-                                  
-
-
-
-
 
 
 def userprofile_receiver(sender, instance, created, *args, **kwargs):
